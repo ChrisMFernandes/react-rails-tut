@@ -9,7 +9,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,6 +20,21 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.NewListForm {
+  margin-bottom: 2%;
+}
+
+footer {
+  height: 20vh;
+  background-color: #282c34;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
 }
 
 @keyframes App-logo-spin {
