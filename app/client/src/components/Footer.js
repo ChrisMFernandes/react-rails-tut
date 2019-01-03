@@ -8,6 +8,14 @@ const Footer = () => {
         <li>Link 2</li>
         <li>Link 3</li>
       </ul>
+
+      <p>Just some stuff about this footer</p>
+
+      <ul> 
+        <li>Social Media Icon</li>
+        <li>Social Media Icon</li>
+        <li>Social Media Icon</li>
+      </ul>
     </footer>
   )
 }

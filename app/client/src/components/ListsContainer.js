@@ -11,10 +11,21 @@ class ListsContainer extends Component {
       lists: []
     }
     this.addNewList = this.addNewList.bind(this)
+    this.removeList = this.removeList.bind(this)
+  }
+  
+  componentDidMount() {
+    axios.get('/api/v1/lists/')
+    .then(response => {
+      this.setState({
+        lists: response.data
+      })
+    })
+    .catch(error => console.log(error))
   }
 
   addNewList(title, excerpt) {
-    axios.post('/api/v1/lists.json', { list: {title, excerpt} })
+    axios.post('/api/v1/lists/', { list: {title, excerpt} })
     .then(response => {
       console.log(response)
       const lists = [ ...this.state.lists, response.data ]
@@ -25,22 +36,26 @@ class ListsContainer extends Component {
     })
   }
 
-  componentDidMount() {
-    axios.get('/api/v1/lists.json')
+  removeList(id) {
+    axios.delete('/api/v1/lists/' + id )
     .then(response => {
-      this.setState({
-        lists: response.data
-      })
+      const lists = this.state.lists.filter(
+        list => list.id !== id 
+      )
+      this.setState = ({lists})
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+      console.log(error)
+    })
   }
+
   
   render() {
     return (
       <div className="Lists-container">
         {this.state.lists.map( list => {
           return (
-            <List list={list} key={list.id} />
+            <List list={list} key={list.id} onRemoveList={this.removeList}/>
           )
         })}
         <NewListForm onNewList={this.addNewList} />

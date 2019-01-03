@@ -23,7 +23,7 @@
 }
 
 .NewListForm {
-  margin-bottom: 2%;
+  margin: 2% 0 2% 0;
 }
 
 footer {
@@ -31,9 +31,9 @@ footer {
   background-color: #282c34;
   color: white;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 
 }
 
