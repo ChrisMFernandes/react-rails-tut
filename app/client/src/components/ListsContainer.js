@@ -36,6 +36,26 @@ class ListsContainer extends Component {
     })
   }
 
+  editList(title, excerpt) {
+    axios.put('/api/v1/lists/' + id, {
+      list: {
+        title,
+        excerpt
+      }
+    })
+    .then(response => {
+      const lists = this.state.lists;
+      lists[id-1] = {id, title, excerpt}
+      this.setState(() => ({
+        lists,
+        editingListId: null
+      }))
+      .catch(error => {
+        console.log(error)
+      })
+    })
+  }
+
   removeList(id) {
     axios.delete('/api/v1/lists/' + id )
     .then(response => {
